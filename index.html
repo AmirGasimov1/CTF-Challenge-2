@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Challenge</title>
+    <script src="cookies.js"></script> <!-- Script to set hidden username cookie -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        input {
+            margin: 5px;
+            padding: 8px;
+            width: 300px;
+        }
+        button {
+            padding: 10px;
+            width: 315px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="login.php" method="POST">
+        <input type="text" name="username" placeholder="Enter username" required><br>
+        <input type="password" name="password" placeholder="Enter password" required><br>
+        <button type="submit">Login</button>
+    </form>
+    <p>Hint: Maybe a hash???</p>
+</body>
+</html>
