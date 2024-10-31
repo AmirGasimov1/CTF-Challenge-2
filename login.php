@@ -1,32 +1,20 @@
- <?php
-// Validate if the username cookie is set and matches the input
-if (isset($_COOKIE['username']) && isset($_POST['username'])) {
-    $inputUsername = $_POST['username'];
-
-    if ($_COOKIE['username'] !== $inputUsername) {
-        die("Invalid username!");
-    }
-} else {
-    die("Unauthorized: Username not found!");
+<?php
+// Check username
+if ($_POST['username'] !== 'hacker$') {
+    die("Invalid username.");
 }
 
-// Expected password hash (MD5 of 'p@ssw0rd123')
+// Expected MD5 hash of password 'p@ssw0rd123'
 $expectedHash = '482c811da5d5b4bc6d497ffa98491e38';
+$inputPassword = $_POST['password'];
+$hashedPassword = md5($inputPassword);
 
-// Get the password input and hash it
-if (isset($_POST['password'])) {
-    $password = $_POST['password'];
-    $hashedPassword = md5($password);
-
-    // Check if the hashed input matches the expected hash
-    if ($hashedPassword === $expectedHash) {
-        header("Location: flag.html"); // Redirect to flag page
-        exit();
-    } else {
-        echo "Invalid password.";
-    }
+if ($hashedPassword === $expectedHash) {
+    // Redirect to flag page on successful login
+    header("Location: flag.html", true, 303);
+    exit();
 } else {
-    echo "Please enter both username and password.";
+    echo "Invalid password.";
 }
 ?>
 
