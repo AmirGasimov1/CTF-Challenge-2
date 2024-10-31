@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Challenge</title>
-    <script src="cookies.js"></script> <!-- Script to set hidden username cookie -->
+    <script src="cookies.js"></script> <!-- Username hidden in cookie -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -26,6 +26,9 @@
             width: 315px;
             cursor: pointer;
         }
+        .hidden-hash {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -36,5 +39,11 @@
         <button type="submit">Login</button>
     </form>
     <p>Hint: Maybe a hash???</p>
+
+    <!-- MD5 hash hidden here for inspection -->
+    <div class="hidden-hash">
+        482c811da5d5b4bc6d497ffa98491e38
+    </div>
 </body>
 </html>
+
