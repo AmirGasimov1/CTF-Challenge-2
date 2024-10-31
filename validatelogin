@@ -1,0 +1,33 @@
+<script>
+    function validateLogin() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        const expectedUsername = "hacker$";
+        const expectedHash = document.getElementById("hiddenHash").innerText;
+
+        // MD5 hashing function in JavaScript
+        async function md5(string) {
+            const hashBuffer = await crypto.subtle.digest("MD5", new TextEncoder().encode(string));
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+        }
+
+        md5(password).then((hashedPassword) => {
+            console.log("Input Username:", username);
+            console.log("Input Password:", password);
+            console.log("Hashed Password:", hashedPassword);
+            console.log("Expected Username:", expectedUsername);
+            console.log("Expected Hash:", expectedHash);
+
+            if (username === expectedUsername && hashedPassword === expectedHash) {
+                // Redirect to the flag page if successful
+                window.location.href = "flag.html"; 
+            } else {
+                alert("Invalid username or password.");
+            }
+        }).catch((error) => {
+            console.error("Error hashing password:", error);
+            alert("An error occurred while validating your login.");
+        });
+    }
+</script>
