@@ -1,4 +1,4 @@
-<?php
+ <?php
 // Validate if the username cookie is set and matches the input
 if (isset($_COOKIE['username']) && isset($_POST['username'])) {
     $inputUsername = $_POST['username'];
@@ -20,7 +20,7 @@ if (isset($_POST['password'])) {
 
     // Check if the hashed input matches the expected hash
     if ($hashedPassword === $expectedHash) {
-        header("Location: flag.html");
+        header("Location: flag.html"); // Redirect to flag page
         exit();
     } else {
         echo "Invalid password.";
@@ -29,3 +29,4 @@ if (isset($_POST['password'])) {
     echo "Please enter both username and password.";
 }
 ?>
+
